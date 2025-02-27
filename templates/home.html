@@ -3,16 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://th.bing.com/th/id/R.5f186a834ec0b46630036f859b6da347?rik=Qp9%2f8fL9ml4hVw&riu=http%3a%2f%2fwww.healinghealth.com%2fwp%2fwp-content%2fuploads%2f2014%2f05%2fdreamstime_m_32203213.jpg&ehk=8ekW97czlXSjzHglKlYvk0z593qvF1A6fU99hXBIVko%3d&risl=1&pid=ImgRaw&r=0');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: rgba(255, 255, 255, 0.5);
+            background-blend-mode: lighten;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #007c91;
+            color: white;
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 24px;
+            display: none; /* Hidden by default */
+        }
+
+        .card:hover {
+            background-color: #005f6b;
+            transform: scale(1.1);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 200px;
+            font-size: 30px;
+        }
+
+        .selection-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .selection-button {
+            background-color: #007c91;
+            color: white;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .selection-button:hover {
+            background-color: #005f6b;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+    <script>
+        function showCards(userType) {
+            var signupCard = document.getElementById('signup-card');
+            var loginCard = document.getElementById('login-card');
+
+            if (userType === 'new') {
+                signupCard.style.display = 'flex';
+                loginCard.style.display = 'none';
+            } else {
+                signupCard.style.display = 'none';
+                loginCard.style.display = 'flex';
+            }
+        }
+    </script>
 </head>
 <body>
-    <ul>
-        <li>
-            <a href="{%url 'signin'}">signin</a>
-        </li>
-        <li>
-            <a href="{%url 'login'}">login</a>
-        </li>
-    </ul>
+    <div class="container">
+        <div class="selection-container">
+            <button class="selection-button" onclick="showCards('new')">New User</button>
+            <button class="selection-button" onclick="showCards('existing')">Existing User</button>
+        </div>
+        <div class="card-container">
+            <div class="card" id="signup-card">
+                <a href="{% url 'signup' %}">Sign Up</a>
+            </div>
+            <div class="card" id="login-card">
+                <a href="{% url 'login' %}">Login</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

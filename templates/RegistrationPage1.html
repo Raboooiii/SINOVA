@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Information Form</title>
+    <link rel="stylesheet" href="styleRP.css">
+    <style>
+        body {
+    font-family: Inter, sans-serif;
+    background-color: #EDFFFD;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.side-panel {
+    background-color: #125873;
+    padding: 25px;
+    width: 250px;
+    box-shadow: 3px 0 5px rgba(0,0,0,0.1);
+}
+
+.side-panel h2 {
+    color: #EDFFFD;
+    font-size: 30px;
+    margin-bottom: 40px;
+    margin-top: 50px;
+}
+
+.side-panel a {
+    display: block;
+    color: #EDFFFD;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.side-panel a:hover {
+    background-color: #3A7389;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.main-content {
+    flex-grow: 1;
+    color: #125873;
+    padding: 20px;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ffffff;
+}
+
+.button {
+
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    align-items: centre;    
+    display: flex;
+    justify-content: left;
+    margin-top: 20px;
+    height: 30px;
+}
+
+button:hover {
+    background-color: #aceff8;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="side-panel">
+            <h2>Menu</h2>
+            <a href="#">Dashboard</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Profile</a>
+            <a href="#">Logout</a>
+        </div>
+        <div class="main-content">
+            <h1>Patient Information Form</h1>
+           
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name"><strong>Full Name : </strong></label>
+                    {{ form.name }}
+                </div>
+                <div class="form-group">
+                    <label for="dob"><strong>Date of Birth : </strong></label>
+                    {{ form.dob }}
+                </div>
+                <div class="form-group">
+                    <label for="gender"><strong>Gender : </strong></label>
+                        {{ form.gender }}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="contact"><strong>Contact Number : </strong></label>
+                    {{ form.contact }}
+                </div>
+                <div class="form-group">
+                    <label for="email"><strong>Email Address : </strong></label>
+                    {{ form.email }}
+                </div>
+                <div class="form-group">
+                    <label for="add"><strong>Home Address : </strong></label>
+                    {{ form.add }}
+                </div>
+                <div class="form-group">
+                    <label for="history"><strong>Medical History : </strong></label>
+                    {{ form.history }}
+                </div>
+                <div class="form-group">
+                    <label for="sym"><strong>Allergies : </strong></label>
+                    {{ form.sym }}
+                </div>
+                
+                <div class="form-group">
+                    <label for="adm"><strong>Date of Admission : </strong></label>
+                    {{ form.adm }}
+                </div>
+            </form>
+            <div class="button">
+                <button type="submit"><strong>Submit</strong></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

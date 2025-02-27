@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration</title>
+    <style>
+        /* Add your styles here (as in previous examples) */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        button[type="submit"] {
+            background-color: #007c91;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #005f6b;
+        }
+    </style>
+</head>
+<body>
+    <h2>Patient Registration</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            {{ form.dob }}
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            {{ form.gender }}
+        </div>
+        <div class="form-group">
+            <label for="contact">Contact Number</label>
+            {{ form.contact }}
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            {{ form.email }}
+        </div>
+        <div class="form-group">
+            <label for="add">Home Address</label>
+            {{ form.add }}
+        </div>
+        <div class="form-group">
+            <label for="history">Medical History</label>
+            {{ form.history }}
+        </div>
+        <div class="form-group">
+            <label for="sym">Allergies</label>
+            {{ form.sym }}
+        </div>
+        <div class="form-group">
+            <label for="adm">Date of Admission</label>
+            {{ form.adm }}
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
